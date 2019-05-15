@@ -12,77 +12,61 @@ namespace App\Entity;
 class Scrap
 {
 
-    private $name;
-    private $ref;
-    private $image;
+    private $titre;
+    private $categorie;
+    private $lieu;
     private $description;
     private $price;
-    private $brand;
-    private $reviews;
-    private $asin;
+    private $tel;
+    private $image;
+    private $keyword;
 
     /**
      * @return mixed
      */
-    public function getAsin()
+    public function getTitre()
     {
-        return $this->asin;
+        return $this->titre;
     }
 
     /**
-     * @param mixed $asin
+     * @param mixed $titre
      */
-    public function setAsin($asin): void
+    public function setTitre($titre): void
     {
-        $this->asin = $asin;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name): void
-    {
-        $this->name = $name;
+        $this->titre = $titre;
     }
 
     /**
      * @return mixed
      */
-    public function getRef()
+    public function getCategorie()
     {
-        return $this->ref;
+        return $this->categorie;
     }
 
     /**
-     * @param mixed $ref
+     * @param mixed $categorie
      */
-    public function setRef($ref): void
+    public function setCategorie($categorie): void
     {
-        $this->ref = $ref;
+        $this->categorie = $categorie;
     }
 
     /**
      * @return mixed
      */
-    public function getImage()
+    public function getLieu()
     {
-        return $this->image;
+        return $this->lieu;
     }
 
     /**
-     * @param mixed $image
+     * @param mixed $lieu
      */
-    public function setImage($image): void
+    public function setLieu($lieu): void
     {
-        $this->image = $image;
+        $this->lieu = $lieu;
     }
 
     /**
@@ -120,43 +104,52 @@ class Scrap
     /**
      * @return mixed
      */
-    public function getBrand()
+    public function getTel()
     {
-        return $this->brand;
+        return $this->tel;
     }
 
     /**
-     * @param mixed $brand
+     * @param mixed $tel
      */
-    public function setBrand($brand): void
+    public function setTel($tel): void
     {
-        $this->brand = $brand;
+        $this->tel = $tel;
     }
 
     /**
      * @return mixed
      */
-    public function getReviews()
+    public function getImage()
     {
-        return $this->reviews;
+        return $this->image;
     }
 
     /**
-     * @param mixed $reviews
+     * @param mixed $image
      */
-    public function setReviews($reviews): void
+    public function setImage($image): void
     {
-        $this->reviews = $reviews;
+        $this->image = $image;
     }
 
-    public function __toString()
+    /**
+     * @return mixed
+     */
+    public function getKeyword()
     {
-        // TODO: Implement __toString() method.
-        echo 'name=>' . $this->name . '<br> ref=>' . $this->ref . '<br>Asin=>' .$this->asin .'<br>Price=>'.
-            $this->price . '<br>Brand=>' . $this->brand .'<br>Description=>' . $this->description . '<br>Image=>' . $this->image
-            . '<br>note=>'. $this->reviews;
-
+        return $this->keyword;
     }
+
+    /**
+     * @param mixed $keyword
+     */
+    public function setKeyword($keyword): void
+    {
+        $this->keyword = $keyword;
+    }
+
+
 
 
 }

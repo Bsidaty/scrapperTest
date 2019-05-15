@@ -27,39 +27,31 @@ class ScrapperService
         $client = \Symfony\Component\Panther\Client::createChromeClient();
         $crawler = $client->request('GET', $link); // Yes, this website is 100% in JavaScript
 
-        $client->waitFor('#dp');
+        $client->waitFor('#dync');
         $data = new Scrap();
-        $image =  $crawler->filter('div#imgTagWrapperId.imgTagWrapper img')->attr('src');
-        $name =  $crawler->filter('span#productTitle.a-size-large')->text();
-        $price =  $crawler->filter('span#priceblock_ourprice.a-size-medium.a-color-price.priceBlockBuyingPriceString')->text();
-        $ref =  $crawler->filter('div#detail_bullets_id table tbody tr div ul li')->first()->text();
-        $brand =  $crawler->filter('a#bylineInfo.a-link-normal')->text();
-        $description =  $crawler->filter('div#feature-bullets.a-section.a-spacing-medium.a-spacing-top-small')->text();
+        $titre =  $crawler->filter('div#annv_cntre span.contentc')->text();
+        $price =  $crawler->filter('div#annv_cntre div.contentc1')->text();
+        $description =  $crawler->filter('div#pdesc')->text();
+        $tel =  $crawler->filter('div#vendinfo')->first()->html();
 
-        $nodeValues = $crawler->filter('div#detail_bullets_id table tbody tr div ul li')->each(function (Crawler $node, $i) {
-            $pieces = explode(":", $node->text());
+        $price=  substr($price , 0 , strpos($price , 'MRU'));
 
-            if ( $pieces['0'] == "Numéro du modèle de l'article") {
-                $ref = $pieces['1'];
-                return $ref;
-            }
+        $tel = substr($tel, strpos($tel , '<br>')+4, strlen($tel) - strripos($tel , '<br>'));
+        $tel = str_replace('Téléphones:','',$tel);
+        $tel = trim(str_replace('<br>','',$tel));
 
-            if ( $pieces['0'] == 'ASIN') {
-                $asin = $pieces['1'];
-                return $asin;
-            }
+        $description = str_replace('Description:','',$description);
+
+        $images = $crawler->filter('div#photodiv img')->each(function (Crawler $node, $i) {
+            return $node->attr('src');
         });
 
-        $ref=$nodeValues['0'];
-        $asin = $nodeValues['1'];
-
-        $data->setName($name);
-        $data->setPrice($price);
-        $data->setimage($image);
-        $data->setRef($ref);
-        $data->setAsin($asin);
-        $data->setBrand($brand);
+        $data->setImage($images);
         $data->setDescription($description);
+        $data->setPrice($price);
+        $data->setTitre($titre);
+        $data->setTel($tel);
+
 
         return $data;
     }

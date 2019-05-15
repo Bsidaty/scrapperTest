@@ -29,6 +29,11 @@ class ScrapperController extends AbstractController
      */
     public function new(Request $request , ScrapperService $scrapperService , GeneratorService $generatorService)
     {
+
+        $data =   $this->scrapper($scrapperService );
+        var_dump($data);
+        die();
+
         $media = new Media();
         $form = $this->createForm(MediaType::class, $media);
         $form->handleRequest($request);
@@ -68,17 +73,15 @@ class ScrapperController extends AbstractController
 
 
 
-    public function scrapper($data , $column ,  ScrapperService $scrapperService , GeneratorService $generatorService)
+    public function scrapper(ScrapperService $scrapperService )
     {
 
 
-        $data= $scrapperService->scrapPage('https://www.amazon.fr/Trussardi-Jeans-Jersey-Stretch-Manche/dp/B07K12GF9M/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=1T001640&qid=1557147686&s=apparel&sr=1-1');
-        //$data = $this->scrapPage();
+        $data= $scrapperService->scrapPage('http://voursa.com/Annoncev.cfm?pdtid=131335&payee=2&adtre=NSSAN%20TD%2042');
+
+                //$data = $this->scrapPage();
        // echo $data;
-
-        return  $generatorService->generateCsvAction($data);
-
-        die();
+            return $data;
 
     }
 
