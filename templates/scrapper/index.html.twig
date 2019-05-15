@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ScrapperController!{% endblock %}
+
+{% block body %}<header>
+    <!--Navbar -->
+    <nav class="mb-1 navbar navbar-expand-lg btn-light">
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-light">
+                    <i style="color: #33b5e5" class="fas fa-print"></i> Scrapper
+                </a>
+            </li>
+
+        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-3"></div>
+        </div>
+    </nav>
+
+    <!--/.Navbar -->
+</header>
+
+
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main>
+
+
+
+
+    <!-- Grid container -->
+    <div class="container my-4">
+
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+
+            <!--Grid column-->
+            <div class="col-md-6">
+
+                <!-- Material card -->
+                <div class="card">
+
+                    <!-- Header -->
+                    <h5 class="card-header info-color white-text text-center py-4">
+                        <strong>Upload your csv File</strong>
+                    </h5>
+
+                    <!--Card content-->
+                    <div class="card-body">
+
+                        {{ form_start(form, {attr: {class: 'md-form'} }) }}
+                            <div class="file-field">
+                                <div class="btn btn-light btn-sm float-left">
+                                    {{ form_row(form.file) }}
+                                </div>
+
+                            </div>
+                        <div class="file-field">
+                                <div class="btn btn-light btn-sm float-left">
+                                    {{ form_row(form.name) }}
+                                </div>
+
+                            </div>
+                        <button id="btnStart" class="btn btn-outline-info btn-rounded btn-block waves-effect z-depth-0 mb-2">Click
+                            to upload</button>
+                        {{ form_end(form) }}
+
+                        <!-- Action button -->
+
+
+                    </div>
+
+                </div>
+                <!-- Material card -->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+
+        <!-- Heading element to display the result -->
+        <h2 id="demo" class="my-5 h2 text-center" style="color: #666;"></h2>
+
+    </div>
+    </main>
+    <!-- Grid container -->
+{% endblock %}
