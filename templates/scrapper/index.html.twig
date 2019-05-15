@@ -50,18 +50,18 @@
                     <div class="card-body">
 
                         {{ form_start(form, {attr: {class: 'md-form'} }) }}
-                            <div class="file-field">
-                                <div class="btn btn-light btn-sm float-left">
-                                    {{ form_row(form.file) }}
-                                </div>
 
-                            </div>
-                        <div class="file-field">
-                                <div class="btn btn-light btn-sm float-left">
-                                    {{ form_row(form.name) }}
-                                </div>
+                        {{ form_row(form.link,{attr: {class: 'form-control mb-4'}}) }}
+                        {{ form_row(form.categorie,{attr: {class: 'form-control mb-4'}}) }}
 
-                            </div>
+                        <input type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="link">
+
+                        <select class="browser-default custom-select">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
                         <button id="btnStart" class="btn btn-outline-info btn-rounded btn-block waves-effect z-depth-0 mb-2">Click
                             to upload</button>
                         {{ form_end(form) }}

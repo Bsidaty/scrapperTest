@@ -30,9 +30,15 @@ class ScrapperController extends AbstractController
     public function new(Request $request , ScrapperService $scrapperService , GeneratorService $generatorService)
     {
 
+       /*
         $data =   $this->scrapper($scrapperService );
         var_dump($data);
-        die();
+        $extension = substr($data->getImage(),-4);
+        $imageName= $this->generateUniqueFileName() .$extension;
+        var_dump($imageName);
+        file_put_contents($this->getParameter('upload_directory'). '/'.$imageName, fopen($data->getImage(), 'r'));
+        */
+
 
         $media = new Media();
         $form = $this->createForm(MediaType::class, $media);
@@ -40,27 +46,11 @@ class ScrapperController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // $file stores the uploaded PDF file
-            /**
-             * @var Symfony\Component\HttpFoundation\File\UploadedFile $file
-             */
-            $file = $form->get('file')->getData();
 
-            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-            $fileExtension = $file->guessExtension();
-            // Move the file to the directory where brochures are stored
-            try {
-                $file->move(
-                    $this->getParameter('upload_directory'),
-                    $fileName
-                );
-            } catch (FileException $e) {
-                echo $e->getMessage();
-            }
 
-            $media->setFile($fileName);
-
-            $data = $generatorService->excelToarray($media->getFile() , $fileExtension);
-          return  $this->scrapper($data,$media->getName(),$scrapperService , $generatorService);
+                var_dump($media);
+            die();
+            return  $this->scrapper($data,$media->getName(),$scrapperService , $generatorService);
 
             die();
         }

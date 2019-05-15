@@ -46,7 +46,7 @@ class ScrapperService
             return $node->attr('src');
         });
 
-        $data->setImage($images);
+        $data->setImage($images['3']);
         $data->setDescription($description);
         $data->setPrice($price);
         $data->setTitre($titre);

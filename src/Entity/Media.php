@@ -20,43 +20,62 @@ class Media
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $name;
+    private $link;
+
 
     /**
-     * @ORM\Column(type="string")
-     * @Assert\File(maxSize="6000000")
-     * @Assert\NotBlank(message="Please, upload your file")
-      */
-    //* @Assert\File(mimeTypes={ "application/pdf" })
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $categorie;
 
-    private $file;
-
-    public function getId(): ?int
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
     {
-        return $this->name;
+        $this->id = $id;
     }
 
-    public function setName(?string $name): self
+    /**
+     * @return mixed
+     */
+    public function getLink()
     {
-        $this->name = $name;
-
-        return $this;
+        return $this->link;
     }
 
-    public function getFile(): ?string
+    /**
+     * @param mixed $link
+     */
+    public function setLink($link): void
     {
-        return $this->file;
+        $this->link = $link;
     }
 
-    public function setFile(string $file): self
+    /**
+     * @return mixed
+     */
+    public function getCategorie()
     {
-        $this->file = $file;
-
-        return $this;
+        return $this->categorie;
     }
-}
+
+    /**
+     * @param mixed $categorie
+     */
+    public function setCategorie($categorie): void
+    {
+        $this->categorie = $categorie;
+    }
+
+
+
+   }
