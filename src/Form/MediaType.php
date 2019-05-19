@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Media;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -16,12 +17,7 @@ class MediaType extends AbstractType
     {
         $builder
             ->add('link', TextType::class, array('label' => false))
-            ->add('categorie' , ChoiceType::class, [
-                'choices' => [
-                    'voiture' =>'1',
-                    'mobile' =>'2',
-
-                ], 'label' => false]);
+            ->add('categorie' , HiddenType::class,array( 'label' => false));
     }
 
     public function configureOptions(OptionsResolver $resolver)
